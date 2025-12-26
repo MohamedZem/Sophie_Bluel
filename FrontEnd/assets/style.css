@@ -13,7 +13,7 @@ dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
+figure, figcaption, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	
 }
 ol, ul {
 	list-style: none;
@@ -48,18 +49,24 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
-	margin:auto;
+	background-color: rgba(255, 254, 248, 1);
+	margin: auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	
+	
 }
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px auto;
+	max-width: 1140px;
+
 }
+
 section {
-	margin: 50px 0
+	max-width: 1140px;
+	margin: 50px auto
 }
 
 h1{
@@ -68,7 +75,8 @@ h1{
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	color: #B1663C;
+	padding:  0 10px;
 }
 
 h1 > span {
@@ -91,13 +99,23 @@ nav ul {
 
 }
 nav li {
-	padding: 0 10px;
+	padding: 22px 10px;
 	font-size: 1.2em;
+	color: inherit;
+	text-decoration: none;
+	cursor: default;
 }
 
 li:hover {
 	color: #B1663C;
 }
+
+li a {
+	color: inherit;
+	text-decoration: none;
+	cursor: default;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -125,12 +143,44 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.buttons-filters {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	padding: 30px;
+	;
+}
+
+.btn-all, .buttons {
+	display: flex;
+    border: 1px solid rgba(29, 97, 84, 1);
+    background-color: rgba(255, 254, 248, 1);
+	color: rgba(29, 97, 84, 1);
+    border-radius: 60px;
+    font-weight: 700;
+    height: 37px;
+    align-items: center;
+	padding: 0px 25px;
+}
+
+.btn-all:hover,
+.buttons:hover {
+	background-color: rgba(29, 97, 84, 1);
+    border-color: rgba(29, 97, 84, 1);
+    color: white;
+    transition: 0.3s;
+	
+}
+
+
 .gallery {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
+	justify-content: center;
 }
 
 .gallery img {
@@ -139,7 +189,10 @@ li:hover {
 }
 #contact {
 	width: 50%;
-margin: auto;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center
 }
 #contact > * {
 	text-align: center;
@@ -149,6 +202,7 @@ margin: auto;
 	margin-bottom: 20px;
 }
 #contact form {
+	width: 53%;
 	text-align: left;
 	margin-top:30px;
 	display: flex;
@@ -178,11 +232,25 @@ input[type="submit"]{
 	width: 180px;
 	text-align: center;
 	border-radius: 60px ;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	opacity: 0.9;
+}
+
+footer {
+	
+	height: 60px;
+	background-color: white;
+	
 }
 
 footer nav ul {
-	display: flex;
+	max-width: 100%;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 0 7%;
+	height: 60px;
 }
+
 
