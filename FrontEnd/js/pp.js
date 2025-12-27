@@ -83,7 +83,7 @@ function createCategoryButtons(categories) {
     const buttonsFilters = document.querySelector(".buttons-filters");
     buttonsFilters.innerHTML = "";
 
-// Bouton "Tous" absent des categories des l'API
+// Création bouton "Tous" absent des categories des l'API
 
 const btnAll = document.createElement("button");
 //Ajout du texte
@@ -114,5 +114,61 @@ for (let i = 0; i < categories.length; i++) {
  buttonsFilters.appendChild(button);
 }
 }
+
+/*** Connexion admin ***/
+ 
+
+const adminSession = document.querySelector(".editor-mode"); /* affiche mode édition */
+
+/* Savoir si l'admin est connecté */
+function isLoggedIn() {
+    return !!localStorage.getItem("token");
+
+    /* affiche la session de l'admin */
+} if (isLoggedIn()) {
+    adminSession.style.display = "block";
+     console.log("Admin connecté");
+} 
+
+/*/ déconnexion */
+function logout() {
+    localStorage.removeItem("token");
+    window.location.href = "login.html";
+}
+const authLogin = document.getElementById("auth-login");
+
+if (isLoggedIn()) {
+  // affiche logout lorsqu'admin connecté
+    authLogin.textContent = "logout";
+    authLogin.addEventListener("click", logout);
+    
+} else { 
+  // sinon affiche login 
+    authLogin.textContent = "login";
+    authLogin.addEventListener("click", () => {
+        window.location.href = "login.html";
+        
+    });
+}
+
+//Masquer les boutons filtres
+const token = localStorage.getItem("token");
+if (token) {
+  const filters = document.querySelector(".buttons-filters");
+  if (filters) {
+    filters.style.display = "none";
+  }
+}
+// afficher "modifier" quand admin connecté
+if (token) {
+	const modify = document.querySelector(".modify");
+	if (modify) {
+		modify.style.display = "flex";
+  }
+}
+ 
+
+
+
 
 
