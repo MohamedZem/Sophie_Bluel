@@ -53,20 +53,43 @@ body {
 	margin: auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+}
+.editor-mode {
+margin: 0;
+padding: 0;
+max-width: 100%;
+display: none;
+}
+
+.editor-mode--container {
 	
+	height: 60px;
+	background-color: black;
+	color: white;
+	font-size: 16px;
+	gap: 21px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	margin: 50px auto;
 	max-width: 1140px;
-
 }
 
 section {
+	
+	margin: 50px 0;
+	padding-top: 50px;
+}
+.portfolio-container {
 	max-width: 1140px;
-	margin: 50px auto
+	margin: auto;
 }
 
 h1{
@@ -119,6 +142,8 @@ li a {
 #introduction {
 	display: flex;
 	align-items: center;
+	max-width: 1140px;
+	margin: auto;
 }
 #introduction figure {
 	flex: 1
@@ -139,8 +164,33 @@ li a {
 #introduction p {
 	margin-bottom: 0.5em;
 }
+
 #portfolio h2 {
 	text-align: center;
+	font-size: 30px;
+	margin-top: 50px;
+}
+.portfolio-title {
+	display: flex;
+	justify-content: center;
+	align-items: baseline;
+	gap: 30px;
+	padding-bottom: 30px;
+	width:100%;
+}
+
+.modify {
+	display: none;
+	margin-bottom: 1em;
+	margin-top: 50px;
+	font-size: 14px;
+	cursor: pointer;
+	color: black;
+	gap: 5px;
+}
+
+.modify img,
+.modify span {
 	margin-bottom: 1em;
 }
 
@@ -149,7 +199,6 @@ li a {
 	justify-content: center;
 	gap: 15px;
 	padding: 30px;
-	;
 }
 
 .btn-all, .buttons {
@@ -181,6 +230,7 @@ li a {
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 	justify-content: center;
+	padding-top: 15px;
 }
 
 .gallery img {
