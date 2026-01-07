@@ -47,31 +47,16 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-/** end reset css**/
+
+
+/** General**/
+
+
 body {
 	background-color: rgba(255, 254, 248, 1);
 	margin: auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
-}
-.editor-mode {
-margin: 0;
-padding: 0;
-max-width: 100%;
-display: none;
-}
-
-.editor-mode--container {
-	
-	height: 60px;
-	background-color: black;
-	color: white;
-	font-size: 16px;
-	gap: 21px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	
 }
 
 header {
@@ -87,12 +72,35 @@ section {
 	margin: 50px 0;
 	padding-top: 50px;
 }
-.portfolio-container {
-	max-width: 1140px;
-	margin: auto;
+
+
+/*** editor mode ***/
+
+
+.editor-mode {
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+	display: none;
 }
 
-h1{
+.editor-mode--container {
+	
+	height: 60px;
+	background-color: black;
+	color: white;
+	font-size: 16px;
+	gap: 21px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+/*** Header ***/
+
+
+h1 a{
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
@@ -100,13 +108,14 @@ h1{
 	font-weight: 800;
 	color: #B1663C;
 	padding:  0 10px;
+	text-decoration: none;
 }
 
-h1 > span {
+h1 a > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
+	text-decoration: none;
 }
 
 h2{
@@ -138,6 +147,18 @@ li a {
 	text-decoration: none;
 	cursor: default;
 }
+nav li img {
+	transition: filter 0.3s ease, transform 0.3s ease;
+	cursor: default;
+}
+
+nav li:hover img {
+	filter: brightness(0) saturate(100%) invert(33%) sepia(20%) saturate(600%) hue-rotate(350deg);
+}
+
+
+/*** Main-intro ***/
+
 
 #introduction {
 	display: flex;
@@ -145,6 +166,7 @@ li a {
 	max-width: 1140px;
 	margin: auto;
 }
+
 #introduction figure {
 	flex: 1
 }
@@ -157,6 +179,7 @@ li a {
 #introduction article {
 	flex: 1
 }
+
 #introduction h2 {
 	margin-bottom: 1em;
 }
@@ -165,23 +188,33 @@ li a {
 	margin-bottom: 0.5em;
 }
 
+
+/*** Main-Portfolio ***/
+
+
+.portfolio-container {
+	max-width: 1140px;
+	margin: auto;
+}
+
 #portfolio h2 {
 	text-align: center;
 	font-size: 30px;
 	margin-top: 50px;
 }
+
 .portfolio-title {
 	display: flex;
 	justify-content: center;
-	align-items: baseline;
+	align-items: center;
 	gap: 30px;
-	padding-bottom: 30px;
+	padding-bottom: 25px;
 	width:100%;
+	margin-bottom: 3em;
 }
 
 .modify {
 	display: none;
-	margin-bottom: 1em;
 	margin-top: 50px;
 	font-size: 14px;
 	cursor: pointer;
@@ -189,16 +222,15 @@ li a {
 	gap: 5px;
 }
 
-.modify img,
-.modify span {
-	margin-bottom: 1em;
+.modify:hover {
+	color: #B1663C;
 }
 
 .buttons-filters {
 	display: flex;
 	justify-content: center;
 	gap: 15px;
-	padding: 30px;
+	padding-bottom: 30px;
 }
 
 .btn-all, .buttons {
@@ -222,7 +254,6 @@ li a {
 	
 }
 
-
 .gallery {
 	width: 100%;
 	display: grid;
@@ -237,6 +268,11 @@ li a {
 	width: 100%;
 
 }
+
+
+/*** Main-contact ***/
+
+
 #contact {
 	width: 50%;
 	margin: auto;
@@ -244,13 +280,16 @@ li a {
 	flex-direction: column;
 	align-items: center
 }
+
 #contact > * {
 	text-align: center;
 
 }
+
 #contact h2{
 	margin-bottom: 20px;
 }
+
 #contact form {
 	width: 53%;
 	text-align: left;
@@ -265,9 +304,11 @@ li a {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 #contact label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
@@ -289,11 +330,14 @@ input[type="submit"]:hover {
 	opacity: 0.9;
 }
 
+
+/*** Footer ***/
+
+
 footer {
 	
 	height: 60px;
 	background-color: white;
-	
 }
 
 footer nav ul {

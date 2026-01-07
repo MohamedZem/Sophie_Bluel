@@ -1,5 +1,5 @@
 
-//Récupération des travaux via l'API
+// Retrieving works from  API
 
 let works = [];
 
@@ -21,11 +21,15 @@ async function getWorks () {
   } catch (error) {
     console.error(error.message);
   }
+  displayWorksInModal(works);
 }
 
 getWorks();
 
-// afficher travaux
+
+
+
+// Display works
 
 function displayWork(work) {
     
@@ -36,7 +40,7 @@ function displayWork(work) {
     gallery.appendChild(figure);
 }
 
-//récupération des catégories
+// Recovery of categories
 
 async function getCategories () {
   const url = "http://localhost:5678/api/categories";
@@ -58,7 +62,7 @@ async function getCategories () {
 
 getCategories();
 
-// filtrage par catégorie
+// Filtering by category
 
 function filterByCategory(categoryId) {
   const gallery = document.querySelector(".gallery");
@@ -77,27 +81,27 @@ function filterByCategory(categoryId) {
   }
 }
 
-// Fonction pour créer les boutons dynamiquement
+// Function to create buttons dynamically
 
 function createCategoryButtons(categories) {
     const buttonsFilters = document.querySelector(".buttons-filters");
     buttonsFilters.innerHTML = "";
 
-// Création bouton "Tous" absent des categories des l'API
+// Creation of button "All"  that is absent in the API categories
 
 const btnAll = document.createElement("button");
-//Ajout du texte
+// Add text
 btnAll.innerHTML = "Tous";
-// création de la class pour le CSS
+// Creation of the class for CSS
 btnAll.classList.add("btn-all");
-//Création de l'évènement au clic 
+// Event created on click
 btnAll.addEventListener("click", function() { 
     filterByCategory (null)
 });
 
 buttonsFilters.appendChild(btnAll);
 
-// Boutons des catégories
+// Buttons of categories
 
 for (let i = 0; i < categories.length; i++) {
 
@@ -115,22 +119,22 @@ for (let i = 0; i < categories.length; i++) {
 }
 }
 
-/*** Connexion admin ***/
+/*** Admin login  ***/
  
 
-const adminSession = document.querySelector(".editor-mode"); /* affiche mode édition */
+const adminSession = document.querySelector(".editor-mode"); /* show edit mode */
 
-/* Savoir si l'admin est connecté */
+/* Checking if the admin is logged in */
 function isLoggedIn() {
     return !!localStorage.getItem("token");
 
-    /* affiche la session de l'admin */
+    /* Displays the admin session */
 } if (isLoggedIn()) {
     adminSession.style.display = "block";
      console.log("Admin connecté");
 } 
 
-/*/ déconnexion */
+/*/ logout */
 function logout() {
     localStorage.removeItem("token");
     window.location.href = "login.html";
@@ -138,12 +142,12 @@ function logout() {
 const authLogin = document.getElementById("auth-login");
 
 if (isLoggedIn()) {
-  // affiche logout lorsqu'admin connecté
+  // Displays logout when admin is logged in
     authLogin.textContent = "logout";
     authLogin.addEventListener("click", logout);
     
 } else { 
-  // sinon affiche login 
+  // else displays login 
     authLogin.textContent = "login";
     authLogin.addEventListener("click", () => {
         window.location.href = "login.html";
@@ -151,7 +155,7 @@ if (isLoggedIn()) {
     });
 }
 
-//Masquer les boutons filtres
+// Hide filter buttons
 const token = localStorage.getItem("token");
 if (token) {
   const filters = document.querySelector(".buttons-filters");
@@ -159,13 +163,16 @@ if (token) {
     filters.style.display = "none";
   }
 }
-// afficher "modifier" quand admin connecté
+// Display "edit" when admin is logged in
 if (token) {
 	const modify = document.querySelector(".modify");
 	if (modify) {
 		modify.style.display = "flex";
   }
 }
+
+
+
  
 
 

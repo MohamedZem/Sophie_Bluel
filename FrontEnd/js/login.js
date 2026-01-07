@@ -1,5 +1,5 @@
 
-// Sélection des éléments du DOM
+// DOM element selection
 
 const form = document.querySelector('form');
 const btnSubmit = document.getElementById('btn_submit');
@@ -8,7 +8,7 @@ const errorId = document.querySelector('.error-alert');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 
-// Formulaire Log In
+// Form Log In
 
 btnSubmit.addEventListener('click', (e) => {
     e.preventDefault();

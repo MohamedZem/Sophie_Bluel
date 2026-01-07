@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!--tag meta-->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-
+    <!--tag title-->
     <title>Sophie Bluel - Architecte d'intérieur</title>
-
+    <!--tag link-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./assets/login.css">
-
+    <!--tag script-->
 	<script src="./js/login.js" defer></script>
 </head>
+
 <body>
+
 <header>
-    <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+    <!--header-->
+    <h1>
+		<a href="index.html"> Sophie Bluel 
+		<span>Architecte d'intérieur</span></a>
+	</h1>
 	<nav>
 		<ul>
 			<li>
@@ -37,13 +44,14 @@
 <main>
 	<section id="login">
         <h2>Log In</h2>
+        <!--error message -->
         <div class="error-alert">
             <div class="error-message">
                 <strong>Erreur de connexion</strong>
                 <p>Veuillez vérifier vos identifiants.</p>
             </div>
         </div>
-        
+        <!--form log in-->
         <form action="#" method="post">
             <label for="email">E-mail</label>
             <input type="email" name="email" id="email" required>
@@ -54,7 +62,7 @@
             <input type="submit" value="Se connecter" id="btn_submit">
         </form>
 
-        <a class="mdp" href="#">Mot de passe oublié</a>
+        <a class="forgotten-password" href="#">Mot de passe oublié</a>
     </section>
 </main>
 <footer>
