@@ -1,0 +1,251 @@
+.hidden {
+    display: none !important;
+}
+
+
+/*** Modal background ***/
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+/*** Modal content ***/
+
+
+.modal-content {
+   display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    background: white;
+    width: 630px;
+    padding: 50px;
+    border-radius: 10px;
+    position: relative;
+    height: 670px;
+}
+
+
+/*** header ***/
+
+
+.close-modal {
+    height: 24px;
+    width: 24px;
+    padding: 0;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.back-modal {
+    width: 21px;
+    height: 21px;
+    padding: 0;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+h3 {
+   
+    font-size: 26px;
+    margin: 30px;
+}
+
+
+/*** modal gallery ***/
+
+
+.modal-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px 9px;
+    margin: 30px 0;
+    width: 420px;
+}
+
+.modal-item {
+    position: relative;
+    width: 76px;
+    height: 103px;
+}
+
+.modal-item img {
+    width: 100%;
+    height: auto;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: black;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+.delete-btn i {
+    color: white;
+    font-size: 12px;
+}
+
+.modal-divider {
+    width: 100%;
+    border: 1px solid rgb(179, 179, 179);
+    margin: 30px  0px;
+}
+
+.btn-add, .btn-submit {
+    font-family: 'Syne';
+    font-weight: 700;
+    color: white;
+    background-color: #1D6154;
+    margin : 1em auto;
+    width: 56%;
+    height: 36px;
+    text-align: center;
+    border-radius: 60px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.btn-add:hover, .btn-submit:hover{
+    opacity: 0.9;
+}
+
+
+/*** modal add photos ***/
+
+
+.modal-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 420px;
+}
+
+#add-photo {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-zone, .preview {
+       width: 420px;
+    height: 169px;
+    display: flex;
+    background: #E8F1F6;
+    text-align: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-zone i {
+  color: rgba(185, 197, 204, 1);
+    display: flex;
+    width: 76px;
+    height: 76px;
+    background: #E8F1F6;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 76px;
+}
+
+.upload-btn {
+        border-radius: 50px;
+    color: rgba(48, 102, 133, 1);
+    background: rgba(203, 214, 220, 1);
+    padding: 11px 35px;
+    cursor: pointer;
+    margin: 5px 10px 5px 10px;
+    box-sizing: border-box;
+}
+
+.upload-btn:hover {
+    opacity: 0.6;
+}
+
+.upload-info {
+    font-size: 10px;
+    width: 94px;
+    height: 12px;
+    color: rgba(68, 68, 68, 1);
+}
+
+.upload-select{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.upload-select input,
+.upload-select select {
+    height: 51px;
+    border: none;
+        filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.9));
+}
+
+
+.btn-submit:disabled {
+    background: #A7A7A7;
+}
+
+
+/*** Preview ***/
+
+
+.preview img {
+    width: 129px;
+    height: 169px;
+    object-fit: contain;
+    background: #E8F1F6;
+    margin: 0 auto 0px;
+}
+
+.preview {
+    cursor: pointer;
+    position: relative;
+}
+
+.preview::after {
+    content: "Changer l’image";
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.preview:hover::after {
+    opacity: 0.8;
+}

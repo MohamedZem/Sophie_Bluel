@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+	<!--tag meta-->
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
-
+	<!--tag title-->
 	<title>Sophie Bluel - Architecte d'intérieur</title>
-
+	<!--tag link-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 	<link rel="stylesheet" href="./assets/style.css">
-	
+	<link rel="stylesheet" href="./assets/modal.css">
+	<!--tag script-->
 	<script src="./js/pp.js" defer></script>
+	<script src="./js/modal.js" defer></script>
 </head>
+
 <body>
+	<!--section mode editor-->
 <section class="editor-mode">
 	<div class="editor-mode--container">
-			<img class="editor-mode--icon" src="./assets/icons/vector.png" alt="icone mode édition">
+		<i class="fa-regular fa-pen-to-square"></i>
 			<span class="editor-mode--text">Mode édition</span>
 	</div>	
 </section>
 
 <header>
-	<h1>Sophie Bluel 
-		<span>Architecte d'intérieur</span>
+	<!--header-->
+	<h1>
+		<a href="index.html"> Sophie Bluel 
+		<span>Architecte d'intérieur</span></a>
 	</h1>
 
 	<nav>
@@ -40,7 +49,7 @@
 			</li>
 				
 			<li>
-				<a href="Instagram">
+				<a href="https://www.instagram.com/" target="_blank">
 					<img src="./assets/icons/instagram.png" alt="Instagram">
 				</a>
 			</li>
@@ -49,6 +58,7 @@
 </header>
 
 <main>
+	<!--section introduction-->
 	<section id="introduction">
 		<figure>
 			<img src="./assets/images/sophie-bluel.png" alt="Sophie Bluel">
@@ -62,22 +72,24 @@
 		</article>
 	</section>
 
+	<!--section portfolio-->
 	<section id="portfolio">
 		<div class="portfolio-container">
 			<div class="portfolio-title">
 				<h2>Mes Projets</h2>
+				<!--zone "modifier" admin-->
 				<div class="modify">
-					<img src="./assets/icons/vector-black.png" alt="icone mode édition">
+					<i class="fa-regular fa-pen-to-square"></i>
 					<span>modifier</span>
 				</div>
 			</div>
-
+			
 			<div class="buttons-filters"></div>
 				
 			<div class="gallery"></div>
 		</div>
 	</section>
-	
+	<!--section contact-->
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
@@ -100,5 +112,66 @@
 		</ul>
 	</nav>
 </footer>
+
+<!-- modal admin -->
+<div class="modal hidden" id="modal-admin">
+    <div class="modal-content">
+
+		<!-- modal header -->
+        <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+		<button class="back-modal hidden"><i class="fa-solid fa-arrow-left"></i></button>
+        <h3 class="modal-title">Galerie photo</h3>
+
+		 <!-- VIEW 1 : gallery photo -->
+		<div class="modal-view modal-gallery-view">
+			<div class="modal-gallery">
+
+				<!-- images from JS -->
+
+				 <!--icon trash-->
+				<i class="fa-solid fa-trash-can fa-2xs"></i>
+			</div>
+
+			<hr class="modal-divider">
+			
+			<button class="btn-add">Ajouter une photo</button>
+		</div>
+		<!-- VIEW 2 : Add photo -->
+    <div class="modal-view modal-add-view hidden">
+        <form id="add-photo">
+			<!--upload new image-->
+            <div class="upload-zone" id="upload-zone">
+				<i class="fa-regular fa-image fa-xl"></i>
+                <input type="file" id="image" accept="image/*" hidden>
+                <label for="image" class="upload-btn">+ Ajouter photo</label>
+				<p class="upload-info">jpg, png : 4mo max</p>
+            </div>
+
+			<!--Preview-->
+			<figure class="preview hidden" id="preview-container">
+				<img id="preview-img" alt="Prévisualisation">
+			</figure>
+
+			<!--choose title and category-->
+			<div class="upload-select">
+				<label>Titre</label>
+				<input type="text" id="title" required>
+
+				<label>Catégorie</label>
+				<select id="category" required>
+					<option value=""  selected >
+					</option>
+				</select>
+			</div>
+
+
+			<hr class="modal-divider">
+
+            <button type="submit" class="btn-submit" disabled>Valider</button>
+        </form>
+    </div>
+	</div>
+</div>
+
 </body>
 </html>
