@@ -5,7 +5,7 @@ const closeModalBtn = document.querySelector(".close-modal");
 // Open modal
 if (modifyBtn && modal) {
     modifyBtn.addEventListener("click", () => {
-       displayWorksInModal(works);
+        displayWorksInModal(works);
         modal.classList.remove("hidden");
     });
 }
@@ -37,13 +37,21 @@ function displayWorksInModal(works) {
         const item = document.createElement("div");
         item.classList.add("modal-item");
 
-        item.innerHTML = `
-            <img src="${work.imageUrl}" alt="${work.title}">
-            <button class="delete-btn" data-id="${work.id}">
-            <i class="fa-solid fa-trash-can"></i>
-            </button>
-        `;
+        const img = document.createElement("img");
+        img.src = work.imageUrl;
+        img.alt = work.title;
 
+        const button = document.createElement("button");
+        button.classList.add("delete-btn");
+        button.dataset.id = work.id;
+
+        const trash = document.createElement("i");
+        trash.classList.add("fa-solid" , "fa-trash-can");
+
+        button.appendChild(trash);
+        item.appendChild(img);
+        item.appendChild(button);
+        
         modalGallery.appendChild(item);
     });
 
@@ -60,7 +68,6 @@ function addDeleteListeners() {
             console.log("photo supprimée");
             const workId = btn.dataset.id;
             deleteWork(workId);
-            
         });
       
     });
@@ -135,7 +142,7 @@ async function loadCategories() {
 
 loadCategories();
 
-  // Function reset form
+// Function reset form
     function resetAddPhotoView() {
     form.reset();
     previewImg.src = "";
@@ -171,71 +178,66 @@ imageInput.addEventListener("change", () => {
     const file = imageInput.files[0];
     if (!file) return;
 
-    // Retrieves the name without the extension
-    const fileName = file.name.replace(/\.[^/.]+$/, "");
+// Retrieves the name without the extension
+const fileName = file.name.replace(/\.[^/.]+$/, "");
 
-    // Automatically fills in the title
-    titleInput.value = fileName;
+// Automatically fills in the title
+titleInput.value = fileName;
 
-   // Preview Image
-    previewImg.src = URL.createObjectURL(file);
-    previewContainer.classList.remove("hidden");
-    uploadZone.classList.add("hidden");
+// Preview Image
+previewImg.src = URL.createObjectURL(file);
+previewContainer.classList.remove("hidden");
+uploadZone.classList.add("hidden");
 
-    checkFormValidity();
-});  
+checkFormValidity();
+    });  
 
-    // Click on the preview to change the image
+// Click on the preview to change the image
 previewContainer.addEventListener("click", () => {
     imageInput.click();
-});
-
-    // Prevent the page from reloading
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    console.log("photo ajoutée");
-
-    // Mandatory image security
-    if (!imageInput.files.length) {
-    
-        alert("Veuillez sélectionner une image");
-        return;                                                                                 
-    };
-    const formData = new FormData();
-    formData.append("image", imageInput.files[0]);
-    formData.append("title", titleInput.value);
-    formData.append("category", categorySelect.value);
-
-    // Add photo to API
-    const res = await fetch("http://localhost:5678/api/works", {
-        method: "POST",
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
-        },
-        body: formData 
     });
 
+// Prevent the page from reloading
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    if (!res.ok) {
-        alert("Erreur ajout");
-        return;
+// Mandatory image security
+if (!imageInput.files.length) {
+    alert("Veuillez sélectionner une image");
+    return;                                                                                 
     };
-    const newWork = await res.json();
 
-    // MAJ front
-    works.push(newWork);
-    displayWork(newWork);
-    displayWorksInModal(works);
+const formData = new FormData();
+formData.append("image", imageInput.files[0]);
+formData.append("title", titleInput.value);
+formData.append("category", categorySelect.value);
 
-    // Reset form
-    resetAddPhotoView();
+// Add photo to API
+const res = await fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+        },
+    body: formData 
+    });
 
-    // Back gallery
-    backBtn.click();
+if (!res.ok) {
+    alert("Erreur ajout");
+    return;
+    };
 
-     // close modal
-    modal.classList.add("hidden");
-});
+const newWork = await res.json();
+
+// MAJ front
+works.push(newWork);
+displayWork(newWork);
+displayWorksInModal(works);
+
+// Reset form
+resetAddPhotoView();
+// Back gallery
+backBtn.click();
+    });
 
 
 
