@@ -56,7 +56,6 @@ async function getCategories () {
     }
     
     const categories = await response.json();
-    console.log(categories);
     createCategoryButtons(categories);
 
   } catch (error) {
@@ -137,7 +136,6 @@ function isLoggedIn() {
 // Displays the admin session 
   } if (isLoggedIn()) {
     adminSession.style.display = "block";
-     console.log("Admin connecté");
   } 
 
 // logout 
