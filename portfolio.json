@@ -8,6 +8,7 @@
     "API REST"
   ],
   "image": "assets/preview.png",
+  "logo": "assets/logo.png",
   "demoUrl": "",
   "featured": true,
   "category": "Frontend"
