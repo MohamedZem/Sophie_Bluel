@@ -1,0 +1,14 @@
+{
+  "title": "Sophie Bluel",
+  "description": "Application web développée en JavaScript permettant à une architecte d'intérieur de gérer sa galerie de réalisations. Le projet intègre une authentification administrateur, une communication avec une API REST et une interface de gestion dynamique des projets.",
+  "technologies": [
+    "HTML5",
+    "CSS3",
+    "JavaScript",
+    "API REST"
+  ],
+  "image": "assets/preview.png",
+  "demoUrl": "",
+  "featured": true,
+  "category": "Frontend"
+}
