@@ -8,8 +8,45 @@
     "API REST"
   ],
   "image": "assets/preview.png",
+  "gallery": [
+    "assets/preview.png",
+    "assets/gallery.png",
+    "assets/login.png",
+    "assets/modal.png",
+    "assets/add-project.png"
+   
+  ],
   "logo": "assets/logo.png",
   "demoUrl": "",
   "featured": true,
-  "category": "Frontend"
+  "category": "Frontend",
+  "context": "Développement de la partie dynamique d'un site existant connecté à une API REST.",
+
+  "objectives": [
+    "Afficher dynamiquement les projets.",
+    "Créer une authentification administrateur.",
+    "Permettre l'ajout et la suppression de projets.",
+    "Communiquer avec une API REST."
+  ],
+
+  "skills": [
+    "JavaScript",
+    "Manipulation du DOM",
+    "Fetch API",
+    "Authentification",
+    "Gestion des événements",
+    "API REST"
+  ],
+
+  "results": [
+    "Galerie dynamique.",
+    "Authentification fonctionnelle.",
+    "Ajout et suppression de projets sans rechargement."
+  ],
+
+  "improvements": [
+    "Ajouter des notifications utilisateur.",
+    "Améliorer la gestion des erreurs.",
+    "Optimiser l'accessibilité des modales."
+  ]
 }
