@@ -224,6 +224,6 @@ https://github.com/MohamedZem/Sophie_Bluel
 
 **Mohamed Zemouchi**
 
-- 🌐 Portfolio : https://www.mohamedzemouchi.fr
-- 💼 LinkedIn : https://www.linkedin.com/in/ton-profil
+- 🌐 Portfolio : http://portfolio-mohamed-zemouchi.onrender.com/
+- 💼 LinkedIn : www.linkedin.com/in/mohamed-zemouchi
 - 💻 GitHub : https://github.com/MohamedZem
