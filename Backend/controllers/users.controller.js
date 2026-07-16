@@ -45,3 +45,30 @@ exports.login = async (req, res) => {
 
 	}
 }
+
+exports.changePassword = async (req, res) => {
+	const { currentPassword, newPassword } = req.body;
+
+	if (!currentPassword || !newPassword) {
+		return res.status(400).json({ message: 'Current password and new password are required' });
+	}
+
+	try {
+		const user = await Users.findOne({ where: { id: req.auth.userId } });
+		if (!user) {
+			return res.status(404).json({ message: 'User not found' });
+		}
+
+		const valid = await bcrypt.compare(currentPassword, user.password);
+		if (!valid) {
+			return res.status(401).json({ message: 'Current password is incorrect' });
+		}
+
+		const hash = await bcrypt.hash(newPassword, 10);
+		await user.update({ password: hash });
+
+		return res.status(200).json({ message: 'Password updated successfully' });
+	} catch (err) {
+		return res.status(500).json({ message: err.message });
+	}
+};

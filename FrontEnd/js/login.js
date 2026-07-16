@@ -27,10 +27,9 @@ function isValidEmail(value) {
 
 function isValidPassword(value) {
     const trimmed = value.trim();
-    return trimmed.length >= 10 &&
+    return trimmed.length >= 6 &&
         /[A-Z]/.test(trimmed) &&
-        /[0-9]/.test(trimmed) &&
-        /[^A-Za-z0-9]/.test(trimmed);
+        /[0-9]/.test(trimmed);
 }
 
 form.addEventListener('submit', (e) => {
