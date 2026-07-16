@@ -159,11 +159,9 @@ const submitBtn = document.querySelector(".btn-submit");
 // Form validation
 // Activate the button if everything is OK
 function checkFormValidity() {
-    submitBtn.disabled = !(
-        imageInput.files.length &&
-        titleInput.value.trim() &&
-        categorySelect.value
-    );
+    const file = imageInput.files[0];
+    const imageValid = file ? validateImageFile(file).valid : false;
+    submitBtn.disabled = !(imageValid && titleInput.value.trim() && categorySelect.value);
 }
 
 imageInput.addEventListener("change", checkFormValidity);
@@ -173,24 +171,73 @@ categorySelect.addEventListener("change", checkFormValidity);
 const uploadZone = document.getElementById("upload-zone");
 const previewContainer = document.getElementById("preview-container");
 const previewImg = document.getElementById("preview-img");
+const imageError = document.getElementById("image-error");
+
+const MAX_IMAGE_SIZE = 4 * 1024 * 1024;
+const ALLOWED_IMAGE_TYPES = ["image/jpeg", "image/png"];
+
+function validateImageFile(file) {
+    if (!file) {
+        return { valid: false, message: "Veuillez sélectionner une image." };
+    }
+    if (!ALLOWED_IMAGE_TYPES.includes(file.type)) {
+        return { valid: false, message: "Format d'image invalide. Seuls jpg et png sont autorisés." };
+    }
+    if (file.size > MAX_IMAGE_SIZE) {
+        return { valid: false, message: "Taille maximale 4 Mo. Choisissez une image plus légère." };
+    }
+    return { valid: true, message: "" };
+}
+
+function showImageError(message) {
+    if (imageError) {
+        imageError.textContent = message;
+        imageError.classList.remove("hidden");
+    } else {
+        alert(message);
+    }
+}
+
+function hideImageError() {
+    if (imageError) {
+        imageError.textContent = "";
+        imageError.classList.add("hidden");
+    }
+}
+
+function clearInvalidImage() {
+    imageInput.value = "";
+    previewImg.src = "";
+    previewContainer.classList.add("hidden");
+    uploadZone.classList.remove("hidden");
+    submitBtn.disabled = true;
+}
 
 imageInput.addEventListener("change", () => {
     const file = imageInput.files[0];
-    if (!file) return;
+    if (!file) {
+        hideImageError();
+        checkFormValidity();
+        return;
+    }
 
-// Retrieves the name without the extension
-const fileName = file.name.replace(/\.[^/.]+$/, "");
+    const validation = validateImageFile(file);
+    if (!validation.valid) {
+        showImageError(validation.message);
+        clearInvalidImage();
+        return;
+    }
 
-// Automatically fills in the title
-titleInput.value = fileName;
+    hideImageError();
 
-// Preview Image
-previewImg.src = URL.createObjectURL(file);
-previewContainer.classList.remove("hidden");
-uploadZone.classList.add("hidden");
+    const fileName = file.name.replace(/\.[^/.]+$/, "");
+    titleInput.value = fileName;
+    previewImg.src = URL.createObjectURL(file);
+    previewContainer.classList.remove("hidden");
+    uploadZone.classList.add("hidden");
 
-checkFormValidity();
-    });  
+    checkFormValidity();
+});  
 
 // Click on the preview to change the image
 previewContainer.addEventListener("click", () => {
@@ -201,24 +248,35 @@ previewContainer.addEventListener("click", () => {
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-// Mandatory image security
-if (!imageInput.files.length) {
-    alert("Veuillez sélectionner une image");
-    return;                                                                                 
-    };
+    const file = imageInput.files[0];
+    const validation = validateImageFile(file);
+    if (!validation.valid) {
+        showImageError(validation.message);
+        return;
+    }
 
-const formData = new FormData();
-formData.append("image", imageInput.files[0]);
-formData.append("title", titleInput.value);
-formData.append("category", categorySelect.value);
+    if (!titleInput.value.trim()) {
+        alert("Veuillez saisir un titre pour l'image.");
+        return;
+    }
 
-// Add photo to API
-const res = await fetch("http://localhost:5678/api/works", {
-    method: "POST",
-    headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`
+    if (!categorySelect.value) {
+        alert("Veuillez sélectionner une catégorie.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", file);
+    formData.append("title", titleInput.value);
+    formData.append("category", categorySelect.value);
+
+    // Add photo to API
+    const res = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
         },
-    body: formData 
+        body: formData
     });
 
 if (!res.ok) {

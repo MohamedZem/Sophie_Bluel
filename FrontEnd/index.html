@@ -146,11 +146,7 @@
                 <input type="file" id="image" accept="image/*" hidden>
                 <label for="image" class="upload-btn">+ Ajouter photo</label>
 				<p class="upload-info">jpg, png : 4mo max</p>
-            </div>
-
-			<!--Preview-->
-			<figure class="preview hidden" id="preview-container">
-				<img id="preview-img" src="" alt="Prévisualisation">
+                <p class="upload-error hidden" id="image-error"></p>
 			</figure>
 
 			<!--choose title and category-->
@@ -160,8 +156,7 @@
 
 				<label>Catégorie</label>
 				<select id="category" required>
-					<option label="Sélectionnez une catégorie" value=""  selected >
-					</option>
+					<option value="" selected>Sélectionnez une catégorie</option>
 				</select>
 			</div>
 
